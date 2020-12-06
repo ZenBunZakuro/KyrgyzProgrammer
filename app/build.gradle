@@ -13,8 +13,12 @@ ext {
 
 android {
     compileSdkVersion 30
+<<<<<<< HEAD
     viewBinding.enabled = true
     buildToolsVersion "30.0.2"
+=======
+    buildToolsVersion "30.0.1"
+>>>>>>> d9f3fdb... initial commit
 
     defaultConfig {
         applicationId "com.entezeer.kyrgyzprogrammer"
@@ -48,7 +52,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+<<<<<<< HEAD
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+=======
+>>>>>>> d9f3fdb... initial commit
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -83,10 +90,13 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+<<<<<<< HEAD
 
     //Bottom Navigation
     implementation 'com.github.volsahin:bottomify-navigation-view:1.0.2'
 
     //Navigation Drawer
     implementation "com.mikepenz:materialdrawer:7.0.0"
+=======
+>>>>>>> d9f3fdb... initial commit
 }

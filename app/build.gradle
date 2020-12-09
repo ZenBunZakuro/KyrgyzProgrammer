@@ -13,7 +13,8 @@ ext {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.1"
+    viewBinding.enabled = true
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.entezeer.kyrgyzprogrammer"
@@ -81,4 +82,10 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    //Bottom Navigation
+    implementation 'com.github.volsahin:bottomify-navigation-view:1.0.2'
+
+    //Navigation Drawer
+    implementation "com.mikepenz:materialdrawer:7.0.0"
 }

@@ -59,7 +59,11 @@ class MainActivity : AppCompatActivity() {
             .addDrawerItems(
                 PrimaryDrawerItem().withIdentifier(100)
                     .withIconTintingEnabled(true)
-                    .withName("Создать группу")
+                    .withName("Достижения")
+                    .withSelectable(false),
+                PrimaryDrawerItem().withIdentifier(100)
+                    .withIconTintingEnabled(true)
+                    .withName("Настройки")
                     .withSelectable(false)
             ).build()
 
@@ -70,8 +74,8 @@ class MainActivity : AppCompatActivity() {
             .withActivity(this)
             .withHeaderBackground(R.drawable.header)
             .addProfiles(
-                ProfileDrawerItem().withName("Yura Petrov")
-                    .withEmail("+7911111111")
+                ProfileDrawerItem().withName("Бахтияр Туратбеков")
+                    .withEmail("+996704900913")
             ).build()
     }
 

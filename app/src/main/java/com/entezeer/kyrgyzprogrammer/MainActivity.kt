@@ -1,10 +1,12 @@
 package com.entezeer.kyrgyzprogrammer
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.entezeer.kyrgyzprogrammer.databinding.ActivityMainBinding
+import com.entezeer.kyrgyzprogrammer.ui.home.HomeFragment
+import com.entezeer.kyrgyzprogrammer.ui.MessageFragment
+import com.entezeer.kyrgyzprogrammer.ui.SearchFragment
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
@@ -17,7 +19,6 @@ import com.volcaniccoder.bottomify.OnNavigationItemChangeListener
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
-    private lateinit var mBottomNav: BottomifyNavigationView
     private lateinit var mToolbar: Toolbar
     private lateinit var mDrawer: Drawer
     private lateinit var mHeader: AccountHeader
@@ -36,15 +37,35 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFun() {
         setSupportActionBar(mToolbar)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.id_data_container,
+                HomeFragment()
+            ).commit()
         createHeader()
         createDrawer()
 
-        mBottomNav = findViewById<BottomifyNavigationView>(R.id.id_bottomify_nav)
-        mBottomNav.setOnNavigationItemChangedListener(object : OnNavigationItemChangeListener{
+        val bottomify = findViewById<BottomifyNavigationView>(R.id.id_bottomify_nav)
+        bottomify.setOnNavigationItemChangedListener(object : OnNavigationItemChangeListener {
             override fun onNavigationItemChanged(navigationItem: BottomifyNavigationView.NavigationItem) {
-                Toast.makeText(this@MainActivity,
-                    "Selected item at index ${navigationItem.position}",
-                    Toast.LENGTH_SHORT).show()
+                when(navigationItem.position){
+                    0 -> {
+                        supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.id_data_container,
+                                HomeFragment()
+                            ).commit()
+                    }
+                    1 -> {
+                        supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.id_data_container, MessageFragment()).commit()
+                    }
+                    2 -> {
+                        supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.id_data_container, SearchFragment()).commit()
+                    }
+                }
             }
         })
     }
@@ -80,6 +101,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFields() {
-        mToolbar = mBinding.mainToolbar
+        mToolbar = mBinding.idMainToolbar
     }
 }

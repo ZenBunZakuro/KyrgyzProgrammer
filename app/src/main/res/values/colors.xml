@@ -3,4 +3,33 @@
     <color name="colorPrimary">#0088cc</color>
     <color name="colorPrimaryDark">#005A87</color>
     <color name="colorAccent">#FFFFFF</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="dark_purple">#38006b</color>
+    <color name="purple">#6a1b9a</color>
+    <color name="half_transparent">#E6FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="light_red">#ff968f</color>
+    <color name="material_red">#f44336</color>
+    <color name="red">#FF0000</color>
+    <color name="red_dark">#cc0000</color>
+    <color name="grey">#565657</color>
+    <color name="light_grey">#e0e0e0</color>
+    <color name="dark_grey">#1a1a1a</color>
+    <color name="blue_grey">#b0bec5</color>
+    <color name="green">#00c853</color>
+    <color name="translucent">#4d000000</color>
+    <color name="transparent10">#1A000000</color>
+    <color name="transparent5">#0D000000</color>
+
+    <color name="divider_color">#000000</color>
+    <color name="splash_background">#FF0000</color>
+    <color name="button_background">#FFFFFF</color>
+    <color name="ll_background">#e0e0e0</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="subtitle_color">#565657</color>
+    <color name="text_color">#000000</color>
+
+    <color name="divider_view_color">#34000000</color>
 </resources>

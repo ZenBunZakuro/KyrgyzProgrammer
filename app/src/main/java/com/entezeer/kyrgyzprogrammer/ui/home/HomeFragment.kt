@@ -18,6 +18,10 @@ class HomeFragment : Fragment() {
     ): View? {
         mBinding = FragmentHomeBinding.inflate(layoutInflater)
         return mBinding.root
+
+
+
+
     }
 
     override fun onResume() {

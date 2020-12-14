@@ -1,47 +1,37 @@
-package com.entezeer.kyrgyzprogrammer.ui.home
+package com.entezeer.kyrgyzprogrammer.ui.fragments.home.lessons
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.entezeer.kyrgyzprogrammer.data.api.ApiClient
 import com.entezeer.kyrgyzprogrammer.data.api.ApiEndpoint
-import com.entezeer.kyrgyzprogrammer.databinding.FragmentHomeBinding
 import com.entezeer.kyrgyzprogrammer.data.models.Lessons
-import com.entezeer.kyrgyzprogrammer.ui.home.adapter.AdapterHome
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.entezeer.kyrgyzprogrammer.databinding.FragmentLessonsBinding
+import com.entezeer.kyrgyzprogrammer.ui.fragments.home.adapter.AdapterLessons
+import kotlinx.android.synthetic.main.fragment_lessons.*
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
-class HomeFragment : Fragment() {
+class LessonsFragment : Fragment() {
+
     var lessons: ArrayList<Lessons> = ArrayList()
 
-    private lateinit var mBinding: FragmentHomeBinding
+    private lateinit var mBinding: FragmentLessonsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentHomeBinding.inflate(layoutInflater)
-
-        return mBinding.root
-
-
-
-
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        mBinding = FragmentLessonsBinding.inflate(layoutInflater)
         setUpView()
-        super.onViewCreated(view, savedInstanceState)
+        return mBinding.root
     }
+
     private fun setUpView() {
-        mBinding.idHomeRecycle.layoutManager = LinearLayoutManager(context)
+
+
         val retrofit = ApiClient().getApiclient().create(ApiEndpoint::class.java)
         retrofit.getLessons().enqueue(object : retrofit2.Callback<ArrayList<Lessons>> {
             override fun onFailure(call: Call<ArrayList<Lessons>>, t: Throwable) {
@@ -55,11 +45,10 @@ class HomeFragment : Fragment() {
                 if (response.body() != null) {
                     lessons = response.body()!!
                     activity?.let {
-                        id_home_recycle.adapter = AdapterHome(lessons, it)
+                        rcv_lessons?.adapter = AdapterLessons(lessons, it)
                     }
                 }
             }
-
         })
     }
 }

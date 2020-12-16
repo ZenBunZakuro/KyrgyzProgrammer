@@ -1,4 +1,4 @@
-package com.entezeer.kyrgyzprogrammer.ui.fragments.home.articles
+package com.entezeer.kyrgyzprogrammer.ui.fragments.articles
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.entezeer.kyrgyzprogrammer.data.api.ApiClient
 import com.entezeer.kyrgyzprogrammer.data.api.ApiEndpoint
 import com.entezeer.kyrgyzprogrammer.data.models.Articles
 import com.entezeer.kyrgyzprogrammer.databinding.FragmentArticlesBinding
-import com.entezeer.kyrgyzprogrammer.ui.fragments.home.adapter.AdapterArticles
+import com.entezeer.kyrgyzprogrammer.ui.fragments.articles.adapter.AdapterArticles
 import kotlinx.android.synthetic.main.fragment_articles.*
 import retrofit2.Call
 import retrofit2.Response
@@ -45,7 +45,11 @@ class ArticlesFragment : Fragment() {
                 if (response.body() != null) {
                     Articles = response.body()!!
                     activity?.let {
-                        rcv_articles?.adapter = AdapterArticles(Articles, it)
+                        rcv_articles?.adapter =
+                            AdapterArticles(
+                                Articles,
+                                it
+                            )
                     }
                 }
             }

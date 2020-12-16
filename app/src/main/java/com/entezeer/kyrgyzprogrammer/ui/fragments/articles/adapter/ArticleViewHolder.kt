@@ -1,4 +1,4 @@
-package com.entezeer.kyrgyzprogrammer.ui.fragments.home.adapter.viewholders
+package com.entezeer.kyrgyzprogrammer.ui.fragments.articles.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

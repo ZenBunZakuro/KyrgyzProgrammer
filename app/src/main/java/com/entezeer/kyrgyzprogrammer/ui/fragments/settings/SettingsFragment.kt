@@ -1,4 +1,4 @@
-package com.entezeer.kyrgyzprogrammer.ui.fragments.home
+package com.entezeer.kyrgyzprogrammer.ui.fragments.settings
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

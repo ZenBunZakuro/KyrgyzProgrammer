@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.articles.ArticlesFragment">
+    tools:context=".ui.fragments.lessons.LessonsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_articles"
+        android:id="@+id/rcv_categories"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
 </FrameLayout>

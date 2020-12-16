@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.entezeer.core.extensions.replaceFragment
 import com.entezeer.kyrgyzprogrammer.databinding.ActivityMainBinding
-import com.entezeer.kyrgyzprogrammer.ui.fragments.home.FavoriteFragment
+import com.entezeer.kyrgyzprogrammer.ui.fragments.favorite.FavoriteFragment
 import com.entezeer.kyrgyzprogrammer.ui.fragments.home.HomeFragment
-import com.entezeer.kyrgyzprogrammer.ui.fragments.home.SettingsFragment
+import com.entezeer.kyrgyzprogrammer.ui.fragments.settings.SettingsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import com.entezeer.kyrgyzprogrammer.R
 import com.entezeer.kyrgyzprogrammer.databinding.FragmentHomeBinding
 import com.entezeer.kyrgyzprogrammer.ui.fragments.home.adapter.ViewPagerAdapter
-import com.entezeer.kyrgyzprogrammer.ui.fragments.home.articles.ArticlesFragment
-import com.entezeer.kyrgyzprogrammer.ui.fragments.home.lessons.LessonsFragment
+import com.entezeer.kyrgyzprogrammer.ui.fragments.articles.ArticlesFragment
+import com.entezeer.kyrgyzprogrammer.ui.fragments.categories.CategoriesFragment
+import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.LessonsContainerFragment
+import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.LessonsFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -31,13 +33,9 @@ class HomeFragment : Fragment() {
 
     private fun setUpTabs() {
         val adapter = ViewPagerAdapter(childFragmentManager)
-        adapter.addFragment(LessonsFragment(), "Lessons")
-        adapter.addFragment(ArticlesFragment(), "Articles")
+        adapter.addFragment(LessonsContainerFragment(), getString(R.string.lessons))
+        adapter.addFragment(ArticlesFragment(), getString(R.string.articles))
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)
-
-        tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_home_black_24)
-        tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_favorite_black_24)
     }
-
 }

@@ -1,4 +1,4 @@
-package com.entezeer.kyrgyzprogrammer.ui.fragments.home
+package com.entezeer.kyrgyzprogrammer.ui.fragments.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater

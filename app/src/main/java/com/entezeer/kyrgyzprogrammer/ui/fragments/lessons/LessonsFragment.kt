@@ -41,27 +41,28 @@ class LessonsFragment : Fragment() {
         tv_title.text = arguments?.getString(ARG_ITEM)
 
         val retrofit = ApiClient().getApiclient().create(ApiEndpoint::class.java)
-        retrofit.getLessonsByCategory(arguments?.getInt(ARG_ID)).enqueue(object : retrofit2.Callback<ArrayList<Lessons>> {
-            override fun onFailure(call: Call<ArrayList<Lessons>>, t: Throwable) {
+        retrofit.getLessonsByCategory(arguments?.getInt(ARG_ID))
+            .enqueue(object : retrofit2.Callback<ArrayList<Lessons>> {
+                override fun onFailure(call: Call<ArrayList<Lessons>>, t: Throwable) {
 
-            }
+                }
 
-            override fun onResponse(
-                call: Call<ArrayList<Lessons>>,
-                response: Response<ArrayList<Lessons>>
-            ) {
-                if (response.body() != null) {
-                    lessons = response.body()!!
-                    activity?.let {
-                        rcv_lessons?.adapter =
-                            AdapterLessons(
-                                lessons,
-                                it
-                            )
+                override fun onResponse(
+                    call: Call<ArrayList<Lessons>>,
+                    response: Response<ArrayList<Lessons>>
+                ) {
+                    if (response.body() != null) {
+                        lessons = response.body()!!
+                        activity?.let {
+                            rcv_lessons?.adapter =
+                                AdapterLessons(
+                                    lessons,
+                                    it
+                                )
+                        }
                     }
                 }
-            }
-        })
+            })
     }
 
     companion object {
@@ -69,17 +70,18 @@ class LessonsFragment : Fragment() {
         private const val ARG_ITEM = "item"
         private const val ARG_TRANSITION_NAME = "transition"
 
-        fun newInstance(id: Int, title: String, transitionName: String): Fragment = LessonsFragment().apply {
-            sharedElementEnterTransition = TransitionUtil()
-            sharedElementReturnTransition = TransitionUtil()
+        fun newInstance(id: Int, title: String, transitionName: String): Fragment =
+            LessonsFragment().apply {
+                sharedElementEnterTransition = TransitionUtil()
+                sharedElementReturnTransition = TransitionUtil()
 
-            val bundle = Bundle()
-            bundle.putInt(ARG_ID, id)
-            bundle.putString(ARG_ITEM, title)
-            bundle.putString(ARG_TRANSITION_NAME, transitionName)
+                val bundle = Bundle()
+                bundle.putInt(ARG_ID, id)
+                bundle.putString(ARG_ITEM, title)
+                bundle.putString(ARG_TRANSITION_NAME, transitionName)
 
-            arguments = bundle
-        }
+                arguments = bundle
+            }
 
     }
 }

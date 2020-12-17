@@ -5,15 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/view_4dp"
-    android:background="@color/primary"
+    android:background="@drawable/rounded_corner"
     android:padding="@dimen/view_8dp">
 
     <ImageView
         android:id="@+id/id_img"
         android:layout_width="@dimen/view_100dp"
         android:layout_height="@dimen/view_100dp"
+        android:foreground="@drawable/rounded_fg"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView

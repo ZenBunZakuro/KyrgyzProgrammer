@@ -8,24 +8,31 @@
     android:background="@drawable/rounded_corner"
     android:padding="@dimen/view_8dp">
 
-    <ImageView
-        android:id="@+id/id_img"
-        android:layout_width="@dimen/view_100dp"
-        android:layout_height="@dimen/view_100dp"
-        android:foreground="@drawable/rounded_fg"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/id_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_def"
-        app:layout_constraintStart_toEndOf="@+id/id_img"
+        android:maxLines="2"
+        style="@style/AppText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card_vw"
         tools:ignore="MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_vw"
+        android:layout_width="@dimen/view_100dp"
+        android:layout_height="@dimen/view_100dp"
+        app:cardCornerRadius="@dimen/view_16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/id_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

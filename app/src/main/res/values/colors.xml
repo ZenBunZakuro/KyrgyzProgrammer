@@ -10,6 +10,8 @@
     <color name="colorBlue">#0098EA</color>
     <color name="colorPurple">#673AB7</color>
 
+    <color name="tabSelectedColor">@color/navigation_view_item_color</color>
+
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="dark_purple">#38006b</color>

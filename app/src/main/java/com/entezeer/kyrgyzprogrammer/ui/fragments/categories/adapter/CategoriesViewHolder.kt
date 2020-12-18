@@ -8,13 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.ViewCompat
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.entezeer.core.base.BaseViewHolder
 import com.entezeer.kyrgyzprogrammer.R
 import com.entezeer.kyrgyzprogrammer.data.models.Category
-import com.entezeer.kyrgyzprogrammer.data.models.Lessons
-import com.entezeer.kyrgyzprogrammer.ui.fragments.categories.adapter.AdapterCategories.*
-import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.adapter.AdapterLessons
-import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.adapter.LessonsViewHolder
+import com.entezeer.kyrgyzprogrammer.ui.fragments.categories.adapter.AdapterCategories.Listener
 
 class CategoriesViewHolder(itemView: View) :
     BaseViewHolder<Category>(itemView) {
@@ -23,7 +21,9 @@ class CategoriesViewHolder(itemView: View) :
 
     override fun bind(category: Category) {
         titleItem.text = category.name
-//        context?.let { Glide.with(it).load(lesson.img).into(imgItem) }
+        context?.let {
+            Glide.with(it).load(category.img).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgItem)
+        }
 
         ViewCompat.setTransitionName(titleItem, category.name)
 

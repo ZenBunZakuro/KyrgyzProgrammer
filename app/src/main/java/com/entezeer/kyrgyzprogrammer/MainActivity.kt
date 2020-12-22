@@ -1,8 +1,12 @@
 package com.entezeer.kyrgyzprogrammer
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import com.entezeer.core.extensions.replaceFragment
 import com.entezeer.kyrgyzprogrammer.databinding.ActivityMainBinding
 import com.entezeer.kyrgyzprogrammer.ui.fragments.favorite.FavoriteFragment
@@ -14,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mToolbar: Toolbar
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +51,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_settings -> replaceFragment(SettingsFragment(), R.id.data_content)
             }
             true
+        }
+    }
+
+    companion object {
+        fun start(context: Context) {
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(context, intent, Bundle())
         }
     }
 }

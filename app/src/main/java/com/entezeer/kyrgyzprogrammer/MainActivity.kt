@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-        replaceFragment(HomeFragment(), R.id.data_content)
+        replaceFragment(HomeFragment(), R.id.data_content, false)
     }
 
 
@@ -49,9 +49,9 @@ class MainActivity : AppCompatActivity() {
     private fun replaceFragmentOnNavigationItemSelected() {
         bottom_nav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_home -> replaceFragment(HomeFragment(), R.id.data_content)
-                R.id.nav_favorite -> replaceFragment(FavoriteFragment(), R.id.data_content)
-                R.id.nav_settings -> replaceFragment(SettingsFragment(), R.id.data_content)
+                R.id.nav_home -> replaceFragment(HomeFragment(), R.id.data_content, true)
+                R.id.nav_favorite -> replaceFragment(FavoriteFragment(), R.id.data_content, true)
+                R.id.nav_settings -> replaceFragment(SettingsFragment(), R.id.data_content, true)
             }
             true
         }

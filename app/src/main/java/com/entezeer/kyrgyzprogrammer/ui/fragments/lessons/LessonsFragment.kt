@@ -1,22 +1,26 @@
 package com.entezeer.kyrgyzprogrammer.ui.fragments.lessons
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.entezeer.core.utils.TransitionUtil
 import com.entezeer.kyrgyzprogrammer.data.api.ApiClient
 import com.entezeer.kyrgyzprogrammer.data.api.ApiEndpoint
 import com.entezeer.kyrgyzprogrammer.data.models.Lessons
 import com.entezeer.kyrgyzprogrammer.databinding.FragmentLessonsBinding
+import com.entezeer.kyrgyzprogrammer.ui.activities.LessonContentActivity
 import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.adapter.AdapterLessons
 import kotlinx.android.synthetic.main.fragment_lessons.*
 import retrofit2.Call
 import retrofit2.Response
 
-class LessonsFragment : Fragment() {
+
+class LessonsFragment : Fragment(), AdapterLessons.Listener {
 
     var lessons: ArrayList<Lessons> = ArrayList()
 
@@ -57,9 +61,10 @@ class LessonsFragment : Fragment() {
                             rcv_lessons?.adapter =
                                 AdapterLessons(
                                     lessons,
-                                    it
+                                    this@LessonsFragment
                                 )
                         }
+                        mBinding.progressBar.visibility = View.GONE
                     }
                 }
             })
@@ -83,5 +88,17 @@ class LessonsFragment : Fragment() {
                 arguments = bundle
             }
 
+    }
+
+    @SuppressLint("NewApi")
+    override fun onItemSelectedAt(position: Int, title: String, textView: TextView) {
+
+        val intent = Intent(activity, LessonContentActivity::class.java)
+
+        val text = textView.text
+
+        intent.putExtra(LessonContentActivity.TEXT, text)
+
+        startActivity(intent)
     }
 }

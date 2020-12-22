@@ -9,6 +9,10 @@
         <item name="android:colorBackground">@color/colorAccent</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.Design.NoActionBar">
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
     <style name="CustomTabStyle" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">@dimen/text_12sp</item>
     </style>

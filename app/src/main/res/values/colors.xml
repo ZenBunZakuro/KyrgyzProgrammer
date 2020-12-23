@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#8C2FFF</color>
+    <color name="colorPrimary">#B67AFF</color>
     <color name="colorPrimaryDark">#5E00D3</color>
     <color name="colorAccent">#FFFFFF</color>
 
@@ -9,6 +9,8 @@
     <color name="colorGreen">#00BA19</color>
     <color name="colorBlue">#0098EA</color>
     <color name="colorPurple">#673AB7</color>
+
+    <color name="tabSelectedColor">@color/navigation_view_item_color</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

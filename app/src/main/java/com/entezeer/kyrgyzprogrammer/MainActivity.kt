@@ -7,7 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
+import com.bumptech.glide.Glide
 import com.entezeer.core.extensions.replaceFragment
+import com.entezeer.core.utils.AppUtils
+import com.entezeer.core.utils.CacheUtils
 import com.entezeer.kyrgyzprogrammer.databinding.ActivityMainBinding
 import com.entezeer.kyrgyzprogrammer.ui.fragments.favorite.FavoriteFragment
 import com.entezeer.kyrgyzprogrammer.ui.fragments.home.HomeFragment
@@ -23,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-        replaceFragment(HomeFragment(), R.id.data_content)
+        replaceFragment(HomeFragment(), R.id.data_content, false)
     }
 
 
@@ -46,9 +49,9 @@ class MainActivity : AppCompatActivity() {
     private fun replaceFragmentOnNavigationItemSelected() {
         bottom_nav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_home -> replaceFragment(HomeFragment(), R.id.data_content)
-                R.id.nav_favorite -> replaceFragment(FavoriteFragment(), R.id.data_content)
-                R.id.nav_settings -> replaceFragment(SettingsFragment(), R.id.data_content)
+                R.id.nav_home -> replaceFragment(HomeFragment(), R.id.data_content, true)
+                R.id.nav_favorite -> replaceFragment(FavoriteFragment(), R.id.data_content, true)
+                R.id.nav_settings -> replaceFragment(SettingsFragment(), R.id.data_content, true)
             }
             true
         }
@@ -59,5 +62,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(context, MainActivity::class.java)
             startActivity(context, intent, Bundle())
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        CacheUtils.deleteCache(this)
+        Glide.get(applicationContext).clearDiskCache()
     }
 }

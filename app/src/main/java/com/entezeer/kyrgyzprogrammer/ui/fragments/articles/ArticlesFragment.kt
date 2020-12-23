@@ -51,6 +51,7 @@ class ArticlesFragment : Fragment() {
                                 it
                             )
                     }
+                    mBinding?.progressBar?.visibility = View.GONE
                 }
             }
         })

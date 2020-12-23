@@ -57,6 +57,7 @@ class CategoriesFragment : Fragment(), AdapterCategories.Listener {
                                 this@CategoriesFragment
                             )
                     }
+                    mBinding?.progressBar?.visibility = View.GONE
                 }
             }
         })

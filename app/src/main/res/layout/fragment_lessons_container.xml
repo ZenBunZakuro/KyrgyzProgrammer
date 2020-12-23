@@ -3,5 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fl_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.lessons.LessonsContainerFragment"/>
+    android:layout_height="0dp"
+    tools:context=".ui.fragments.lessons.LessonsContainerFragment" />

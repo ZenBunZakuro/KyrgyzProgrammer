@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.entezeer.core.base.BaseViewHolder
 import com.entezeer.kyrgyzprogrammer.R
 import com.entezeer.kyrgyzprogrammer.data.models.Articles
@@ -18,7 +19,7 @@ class ArticleViewHolder(itemView: View) :
 
     override fun bind(article: Articles) {
         titleItem.text = article.title
-        context?.let { Glide.with(it).load(article.img).into(imgItem) }
+        context?.let { Glide.with(it).load(article.img).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgItem) }
     }
 
     companion object {

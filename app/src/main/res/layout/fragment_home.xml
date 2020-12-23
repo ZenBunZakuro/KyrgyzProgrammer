@@ -18,16 +18,17 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@color/white"
+            app:tabIndicatorColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabBackground="@color/colorPrimaryDark"
-            app:tabGravity="fill"
+            app:tabGravity="center"
+            app:tabRippleColor="@color/black"
             app:tabInlineLabel="true"
             app:tabMode="fixed"
             app:tabTextAppearance="@style/CustomTabStyle"
-            app:tabTextColor="@color/colorAccent" />
+            app:tabTextColor="@color/black" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

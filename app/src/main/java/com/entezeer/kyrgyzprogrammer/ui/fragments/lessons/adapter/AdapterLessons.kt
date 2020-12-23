@@ -23,7 +23,7 @@ class AdapterLessons(val list: ArrayList<Lessons>, var listener: Listener) :
     }
 
     interface Listener {
-        fun onItemSelectedAt(position: Int, title: String, textView: TextView)
+        fun onItemSelectedAt(position: Int)
     }
 }
 

@@ -29,7 +29,7 @@ class LessonsFragment : Fragment(), AdapterLessons.Listener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         mBinding = FragmentLessonsBinding.inflate(layoutInflater)
         return mBinding.root
     }
@@ -91,14 +91,7 @@ class LessonsFragment : Fragment(), AdapterLessons.Listener {
     }
 
     @SuppressLint("NewApi")
-    override fun onItemSelectedAt(position: Int, title: String, textView: TextView) {
-
-        val intent = Intent(activity, LessonContentActivity::class.java)
-
-        val text = textView.text
-
-        intent.putExtra(LessonContentActivity.TEXT, text)
-
-        startActivity(intent)
+    override fun onItemSelectedAt(position: Int) {
+        activity?.let { LessonContentActivity.start(it, lessons[position]) }
     }
 }

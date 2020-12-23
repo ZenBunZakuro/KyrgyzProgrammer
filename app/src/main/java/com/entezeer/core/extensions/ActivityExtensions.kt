@@ -8,6 +8,13 @@ import androidx.fragment.app.Fragment
 import com.entezeer.kyrgyzprogrammer.R
 import kotlinx.android.synthetic.main.activity_main.*
 
+private val AppCompatActivity.toast: Toast?
+    get() = Toast.makeText(
+        applicationContext,
+        "Settings",
+        Toast.LENGTH_SHORT
+    )
+
 fun AppCompatActivity.replaceFragment(fragment: Fragment, content: Int, addStack: Boolean) {
     if (addStack) {
         val transaction = supportFragmentManager.beginTransaction()

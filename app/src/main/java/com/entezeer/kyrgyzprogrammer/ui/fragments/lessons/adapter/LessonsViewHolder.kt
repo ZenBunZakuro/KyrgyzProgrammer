@@ -28,7 +28,7 @@ class LessonsViewHolder(itemView: View) :
         ViewCompat.setTransitionName(titleItem, lesson.title)
 
         itemView.setOnClickListener {
-            listener?.onItemSelectedAt(position, lesson.title, titleItem)
+            listener?.onItemSelectedAt(position)
         }
     }
 

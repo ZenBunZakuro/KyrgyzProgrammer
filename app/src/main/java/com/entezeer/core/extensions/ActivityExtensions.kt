@@ -3,10 +3,8 @@ package com.entezeer.core.extensions
 import android.app.Activity
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import com.entezeer.kyrgyzprogrammer.R
-import kotlinx.android.synthetic.main.activity_main.*
 
 private val AppCompatActivity.toast: Toast?
     get() = Toast.makeText(
@@ -15,36 +13,27 @@ private val AppCompatActivity.toast: Toast?
         Toast.LENGTH_SHORT
     )
 
-fun AppCompatActivity.replaceFragment(fragment: Fragment, content: Int, addStack: Boolean) {
-    if (addStack) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.addToBackStack(fragment::class.java.canonicalName)
-        //Toast.makeText(applicationContext, fragment::class.java.canonicalName.toString(), Toast.LENGTH_SHORT).show()
-        transaction.replace(content, fragment)
-        transaction.commit()
-
-        when (fragment::class.java.canonicalName.toString()) {
-            "com.entezeer.kyrgyzprogrammer.ui.fragments.home.HomeFragment" -> Toast.makeText(
-                applicationContext,
-                "Home",
-                Toast.LENGTH_SHORT
-            ).show()
-            "com.entezeer.kyrgyzprogrammer.ui.fragments.favorite.FavoriteFragment" -> Toast.makeText(
-                applicationContext,
-                "Favorite",
-                Toast.LENGTH_SHORT
-            ).show()
-            "com.entezeer.kyrgyzprogrammer.ui.fragments.settings.SettingsFragment" -> Toast.makeText(
-                applicationContext,
-                "Settings",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    } else {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(content, fragment)
-        transaction.commit()
+fun AppCompatActivity.replaceFragment(fragment: Fragment, content: Int) {
+    if (!equalByLast(fragment)) {
+        supportFragmentManager.beginTransaction()
+            .replace(content, fragment)
+            .addToBackStack(fragment::class.java.canonicalName)
+            .commit()
     }
+}
+
+fun AppCompatActivity.equalByLast(fragment: Fragment): Boolean {
+    if (supportFragmentManager.backStackEntryCount > 0) {
+        val lastFragment =
+            supportFragmentManager.getBackStackEntryAt(supportFragmentManager.backStackEntryCount - 1).name
+        return lastFragment == fragment::class.java.canonicalName
+    }
+    return false
+}
+
+fun AppCompatActivity.isFragmentVisible(tag: String, id: Int): Boolean {
+    val currentFragment = supportFragmentManager.findFragmentById(id)
+    return currentFragment != null && currentFragment::class.java.canonicalName == tag
 }
 
 fun Activity.fadeIn() {

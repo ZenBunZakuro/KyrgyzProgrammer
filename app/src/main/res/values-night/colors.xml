@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="action_bar_color">@color/black</color>
-    <color name="splash_background">#000000</color>
+    <color name="action_bar_color">#000000</color>
+    <color name="splash_background">#1a1a1a</color>
     <color name="button_background">#000000</color>
     <color name="ll_background">#1a1a1a</color>
-    <color name="card_background">#000000</color>
+    <color name="background">#1a1a1a</color>
+    <color name="item_background">#000000</color>
     <color name="subtitle_color">#b0bec5</color>
     <color name="text_color">#FFFFFF</color>
     <color name="divider_color">#FFFFFF</color>
+    <color name="indicator_color">#FFFFFF</color>
 
     <color name="divider_view_color">#1a1a1a</color>
 </resources>

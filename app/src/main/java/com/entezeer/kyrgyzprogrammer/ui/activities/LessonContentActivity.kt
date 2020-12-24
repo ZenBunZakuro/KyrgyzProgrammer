@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat.startActivity
 import com.bumptech.glide.Glide
+import com.entezeer.kyrgyzprogrammer.R
 import com.entezeer.kyrgyzprogrammer.data.models.Lessons
 import com.entezeer.kyrgyzprogrammer.databinding.ActivityLessonContentBinding
 
@@ -40,7 +41,7 @@ class LessonContentActivity : AppCompatActivity() {
         mBinding.wvContent.apply {
             settings.javaScriptEnabled = true
             setBackgroundColor(Color.TRANSPARENT)
-            lesson?.content?.let { loadData("<style>img{display: inline; height: auto; max-width: 100%;} body{text-align: justify;}</style>$it", "text/html; charset=UTF-8", null) }
+            lesson?.content?.let { loadData("<font color='${getString(R.string.webview_text_color)}'><style>img{display: inline; height: auto; max-width: 100%;} body{text-align: justify;}</style>$it</font>", "text/html; charset=UTF-8", null) }
         }
 
         Glide.with(this).load(lesson?.img).into(mBinding.ivContentImage)

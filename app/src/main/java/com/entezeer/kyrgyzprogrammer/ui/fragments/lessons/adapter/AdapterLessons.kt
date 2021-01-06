@@ -1,9 +1,9 @@
 package com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.adapter
 
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.entezeer.core.base.BaseViewHolder
+import com.entezeer.kyrgyzprogrammer.data.models.Category
 import com.entezeer.kyrgyzprogrammer.data.models.Lessons
 
 class AdapterLessons(val list: ArrayList<Lessons>, var listener: Listener) :

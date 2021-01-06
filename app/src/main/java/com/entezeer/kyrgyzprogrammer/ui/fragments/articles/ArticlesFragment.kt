@@ -5,18 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.entezeer.kyrgyzprogrammer.data.api.ApiClient
+import androidx.lifecycle.Observer
+import com.entezeer.core.base.BaseFragment
+import com.entezeer.kyrgyzprogrammer.R
 import com.entezeer.kyrgyzprogrammer.data.api.ApiEndpoint
 import com.entezeer.kyrgyzprogrammer.data.models.Articles
 import com.entezeer.kyrgyzprogrammer.databinding.FragmentArticlesBinding
 import com.entezeer.kyrgyzprogrammer.ui.fragments.articles.adapter.AdapterArticles
+import com.entezeer.kyrgyzprogrammer.ui.fragments.categories.CategoryViewModel
+import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.LessonsFragment
 import kotlinx.android.synthetic.main.fragment_articles.*
 import retrofit2.Call
 import retrofit2.Response
 
-class ArticlesFragment : Fragment() {
-
-    var Articles: ArrayList<Articles> = ArrayList()
+class ArticlesFragment: BaseFragment<ArticlesViewModel>(ArticlesViewModel::class.java, R.layout.fragment_articles) {
 
     private lateinit var mBinding: FragmentArticlesBinding
 
@@ -25,35 +27,30 @@ class ArticlesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mBinding = FragmentArticlesBinding.inflate(layoutInflater)
-        setUpView()
         return mBinding.root
     }
 
-    private fun setUpView() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        subscribeToLiveData()
+    }
 
-        val retrofit = ApiClient().getApiclient().create(ApiEndpoint::class.java)
-        retrofit.getArticles().enqueue(object : retrofit2.Callback<ArrayList<Articles>> {
-            override fun onFailure(call: Call<ArrayList<Articles>>, t: Throwable) {
-
-            }
-
-            override fun onResponse(
-                call: Call<ArrayList<Articles>>,
-                response: Response<ArrayList<Articles>>
-            ) {
-                if (response.body() != null) {
-                    Articles = response.body()!!
-                    activity?.let {
-                        rcv_articles?.adapter =
-                            AdapterArticles(
-                                Articles,
-                                it
-                            )
-                    }
-                    mBinding?.progressBar?.visibility = View.GONE
-                }
-            }
+    private fun subscribeToLiveData() {
+        vm.fetchArticles()
+        vm.articles.observe(viewLifecycleOwner, Observer {
+            showArticles(it)
         })
+    }
+
+    private fun showArticles(articles: ArrayList<Articles>) {
+        activity?.let {
+            rcv_articles?.adapter =
+                AdapterArticles(
+                    articles,
+                    it
+                )
+        }
+        mBinding.progressBar.visibility = View.GONE
     }
 }

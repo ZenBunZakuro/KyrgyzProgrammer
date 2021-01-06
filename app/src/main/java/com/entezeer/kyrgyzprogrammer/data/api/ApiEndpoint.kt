@@ -9,14 +9,14 @@ import retrofit2.http.Path
 
 interface ApiEndpoint {
     @GET("lessons")
-    fun getLessons(): Call<ArrayList<Lessons>>
+    suspend fun getLessons(): ArrayList<Lessons>
 
     @GET("articles")
-    fun getArticles(): Call<ArrayList<Articles>>
+    suspend fun getArticles(): ArrayList<Articles>
 
     @GET("categories")
-    fun getCategories(): Call<ArrayList<Category>>
+    suspend fun getCategories(): ArrayList<Category>
 
     @GET("lessons_by_category/{id}")
-    fun getLessonsByCategory(@Path("id") id: Int?): Call<ArrayList<Lessons>>
+    suspend fun getLessonsByCategory(@Path("id") id: Int?): ArrayList<Lessons>
 }

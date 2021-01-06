@@ -1,49 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#B67AFF</color>
-    <color name="colorPrimaryDark">#5E00D3</color>
-    <color name="colorAccent">#FFFFFF</color>
-
-    <color name="colorGrey">#939393</color>
-    <color name="colorBlack">#000000</color>
-    <color name="colorGreen">#00BA19</color>
-    <color name="colorBlue">#0098EA</color>
-    <color name="colorPurple">#673AB7</color>
-
     <color name="cyan">#11C1EA</color>
     <color name="light_cyan">#47dcff</color>
     <color name="dark_cyan">#1593b0</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="dark_purple">#38006b</color>
     <color name="purple">#6a1b9a</color>
     <color name="half_transparent">#E6FFFFFF</color>
     <color name="transparent">#00000000</color>
-    <color name="light_red">#ff968f</color>
-    <color name="material_red">#f44336</color>
-    <color name="red">#FF0000</color>
-    <color name="red_dark">#cc0000</color>
     <color name="grey">#565657</color>
     <color name="light_grey">#e0e0e0</color>
     <color name="dark_grey">#1a1a1a</color>
-    <color name="blue_grey">#b0bec5</color>
-    <color name="green">#00c853</color>
     <color name="translucent">#4d000000</color>
     <color name="transparent10">#1A000000</color>
     <color name="transparent5">#0D000000</color>
 
-    <color name="action_bar_color">#FFFFFF</color>
+    <color name="system_bar_color">#FFFFFF</color>
     <color name="splash_background">#FFFFFF</color>
     <color name="background">#e0e0e0</color>
     <color name="indicator_color">#000000</color>
 
-    <color name="divider_color">#000000</color>
     <color name="button_background">#FFFFFF</color>
-    <color name="ll_background">#e0e0e0</color>
     <color name="item_background">#FFFFFF</color>
     <color name="subtitle_color">#565657</color>
     <color name="text_color">#000000</color>
 
-    <color name="divider_view_color">#34000000</color>
+    <color name="ripple_clicked_background">#FFFFFF</color>
+    <color name="ripple_background">#000000</color>
+
 </resources>

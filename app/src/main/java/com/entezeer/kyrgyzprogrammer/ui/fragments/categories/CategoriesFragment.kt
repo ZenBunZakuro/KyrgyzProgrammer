@@ -6,21 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import com.entezeer.core.base.BaseFragment
 import com.entezeer.kyrgyzprogrammer.R
-import com.entezeer.kyrgyzprogrammer.data.api.ApiClient
-import com.entezeer.kyrgyzprogrammer.data.api.ApiEndpoint
 import com.entezeer.kyrgyzprogrammer.data.models.Category
 import com.entezeer.kyrgyzprogrammer.databinding.FragmentCategoriesBinding
 import com.entezeer.kyrgyzprogrammer.ui.fragments.categories.adapter.AdapterCategories
 import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.LessonsFragment
 import kotlinx.android.synthetic.main.fragment_categories.*
-import retrofit2.Call
-import retrofit2.Response
 
-class CategoriesFragment : Fragment(), AdapterCategories.Listener {
-
-    var categories: ArrayList<Category> = ArrayList()
+class CategoriesFragment :
+    BaseFragment<CategoryViewModel>(CategoryViewModel::class.java, R.layout.fragment_categories),
+    AdapterCategories.Listener {
 
     private var mBinding: FragmentCategoriesBinding? = null
 
@@ -32,35 +29,30 @@ class CategoriesFragment : Fragment(), AdapterCategories.Listener {
 
         mBinding = FragmentCategoriesBinding.inflate(layoutInflater)
 
-        setUpView()
-
         return mBinding?.root
     }
 
-    private fun setUpView() {
-        val retrofit = ApiClient().getApiclient().create(ApiEndpoint::class.java)
-        retrofit.getCategories().enqueue(object : retrofit2.Callback<ArrayList<Category>> {
-            override fun onFailure(call: Call<ArrayList<Category>>, t: Throwable) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        subscribeToLiveData()
+    }
 
-            }
-
-            override fun onResponse(
-                call: Call<ArrayList<Category>>,
-                response: Response<ArrayList<Category>>
-            ) {
-                if (response.body() != null) {
-                    categories = response.body()!!
-                    activity?.let {
-                        rcv_categories?.adapter =
-                            AdapterCategories(
-                                categories,
-                                this@CategoriesFragment
-                            )
-                    }
-                    mBinding?.progressBar?.visibility = View.GONE
-                }
-            }
+    private fun subscribeToLiveData() {
+        vm.fetchCategories()
+        vm.categories.observe(viewLifecycleOwner, Observer {
+            showCategories(it)
         })
+    }
+
+    private fun showCategories(categories: ArrayList<Category>) {
+        activity?.let {
+        rcv_categories?.adapter =
+            AdapterCategories(
+                categories,
+                this@CategoriesFragment
+            )
+    }
+        mBinding?.progressBar?.visibility = View.GONE
     }
 
     @SuppressLint("NewApi")
@@ -69,7 +61,12 @@ class CategoriesFragment : Fragment(), AdapterCategories.Listener {
             ?.addSharedElement(textView, textView.transitionName)
             ?.replace(
                 R.id.fl_container,
-                LessonsFragment.newInstance(categories[position].id!!, title, textView.transitionName))
+                LessonsFragment.newInstance(
+                    vm.categories.value?.get(position)?.id!!,
+                    title,
+                    textView.transitionName
+                )
+            )
             ?.addToBackStack(LessonsFragment::class.java.canonicalName)
             ?.commit()
     }

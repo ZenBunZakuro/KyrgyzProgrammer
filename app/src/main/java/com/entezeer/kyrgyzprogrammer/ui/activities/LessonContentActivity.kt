@@ -18,7 +18,6 @@ import com.entezeer.kyrgyzprogrammer.databinding.ActivityLessonContentBinding
 class LessonContentActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityLessonContentBinding
-    private lateinit var mToolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +28,7 @@ class LessonContentActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun setupView(){
-        mToolbar = mBinding.contentToolbar
-        setSupportActionBar(mToolbar)
+        setSupportActionBar(mBinding.contentToolbar)
 
         supportActionBar?.apply {
             title = lesson?.title
@@ -58,7 +56,6 @@ class LessonContentActivity : AppCompatActivity() {
 
     companion object {
         private var lesson: Lessons? = null
-
 
         fun start(context: Context, lessons: Lessons){
             val intent = Intent(context, LessonContentActivity::class.java)

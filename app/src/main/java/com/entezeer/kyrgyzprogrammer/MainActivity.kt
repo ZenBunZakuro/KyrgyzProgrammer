@@ -3,7 +3,6 @@ package com.entezeer.kyrgyzprogrammer
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import com.entezeer.core.extensions.isFragmentVisible
 import com.entezeer.core.extensions.replaceFragment
@@ -13,8 +12,9 @@ import com.entezeer.kyrgyzprogrammer.ui.fragments.favorite.FavoriteFragment
 import com.entezeer.kyrgyzprogrammer.ui.fragments.home.HomeFragment
 import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.LessonsFragment
 import com.entezeer.kyrgyzprogrammer.ui.fragments.settings.SettingsFragment
+import dagger.android.support.DaggerAppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class   MainActivity : DaggerAppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
 

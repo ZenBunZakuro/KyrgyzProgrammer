@@ -11,6 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.entezeer.core.base.BaseViewHolder
 import com.entezeer.kyrgyzprogrammer.R
 import com.entezeer.kyrgyzprogrammer.data.models.Articles
+import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.adapter.AdapterLessons
 
 class ArticleViewHolder(itemView: View) :
     BaseViewHolder<Articles>(itemView) {
@@ -19,18 +20,29 @@ class ArticleViewHolder(itemView: View) :
 
     override fun bind(article: Articles) {
         titleItem.text = article.title
-        context?.let { Glide.with(it).load(article.img).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgItem) }
+        context?.let {
+            Glide.with(it).load(article.img).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgItem)
+        }
+
+        itemView.setOnClickListener {
+            listener?.onItemSelectedAt(position)
+        }
     }
 
     companion object {
         var context: Context? = null
-        fun create(parent: ViewGroup): ArticleViewHolder {
+        var listener: AdapterArticles.Listener? = null
+        fun create(
+            parent: ViewGroup,
+            listener: AdapterArticles.Listener
+        ): ArticleViewHolder {
             val holder =
                 ArticleViewHolder(
                     LayoutInflater.from(parent.context)
                         .inflate(R.layout.recycle_item, parent, false)
                 )
             context = parent.context
+            this.listener = listener
             return holder
         }
     }

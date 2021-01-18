@@ -53,12 +53,17 @@ class LessonsFragment :
                 )
         }
         mBinding.progressBar.visibility = View.GONE
+        mBinding.swipeToRefreshLessons.isRefreshing = false
     }
 
     @SuppressLint("NewApi")
     private fun setUpView() {
         tv_title.transitionName = arguments?.getString(ARG_TRANSITION_NAME)
         tv_title.text = arguments?.getString(ARG_ITEM)
+
+        mBinding.swipeToRefreshLessons.setOnRefreshListener {
+            arguments?.getInt(ARG_ID)?.let { vm.fetchLessons(it) }
+        }
     }
 
     companion object {

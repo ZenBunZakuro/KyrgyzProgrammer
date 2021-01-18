@@ -13,5 +13,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="webview_text_color">black</string>
+    <string name="about_app">О приложении</string>
+    <string name="write_for_us">Написать нам</string>
+    <string name="ask_about_wrong">Сообщить об ошибке</string>
+    <string name="rate_app">Оценить приложение</string>
+    <string name="share_app">Поделиться приложением</string>
+    <string name="language">Язык</string>
+    <string name="theme">Тема</string>
 
 </resources>

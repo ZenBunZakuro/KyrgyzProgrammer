@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.activities.ArticlesContentActivity"></activity>
         <activity
             android:name=".ui.activities.LessonContentActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/CollapsinToolbarTheme">
-        </activity>
+            android:theme="@style/CollapsinToolbarTheme"></activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
@@ -27,7 +27,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.activities.SplashActivity"
             android:screenOrientation="portrait"

@@ -10,14 +10,22 @@
 
     <TextView
         android:id="@+id/id_title"
+        style="@style/AppText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="2"
-        style="@style/AppText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/card_vw"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:padding="@dimen/view_8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_share_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_vw"

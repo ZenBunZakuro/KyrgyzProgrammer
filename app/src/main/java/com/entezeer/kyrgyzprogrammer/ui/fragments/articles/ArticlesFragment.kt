@@ -1,24 +1,21 @@
 package com.entezeer.kyrgyzprogrammer.ui.fragments.articles
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.entezeer.core.base.BaseFragment
 import com.entezeer.kyrgyzprogrammer.R
-import com.entezeer.kyrgyzprogrammer.data.api.ApiEndpoint
 import com.entezeer.kyrgyzprogrammer.data.models.Articles
 import com.entezeer.kyrgyzprogrammer.databinding.FragmentArticlesBinding
+import com.entezeer.kyrgyzprogrammer.ui.activities.ArticlesContentActivity
 import com.entezeer.kyrgyzprogrammer.ui.fragments.articles.adapter.AdapterArticles
-import com.entezeer.kyrgyzprogrammer.ui.fragments.categories.CategoryViewModel
-import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.LessonsFragment
 import kotlinx.android.synthetic.main.fragment_articles.*
-import retrofit2.Call
-import retrofit2.Response
 
-class ArticlesFragment: BaseFragment<ArticlesViewModel>(ArticlesViewModel::class.java, R.layout.fragment_articles) {
+class ArticlesFragment: BaseFragment<ArticlesViewModel>(ArticlesViewModel::class.java, R.layout.fragment_articles),
+    AdapterArticles.Listener {
 
     private lateinit var mBinding: FragmentArticlesBinding
 
@@ -32,8 +29,14 @@ class ArticlesFragment: BaseFragment<ArticlesViewModel>(ArticlesViewModel::class
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         subscribeToLiveData()
+        setupView()
+    }
+
+    private fun setupView() {
+        mBinding.swipeToRefreshArticles.setOnRefreshListener {
+            vm.fetchArticles()
+        }
     }
 
     private fun subscribeToLiveData() {
@@ -48,9 +51,15 @@ class ArticlesFragment: BaseFragment<ArticlesViewModel>(ArticlesViewModel::class
             rcv_articles?.adapter =
                 AdapterArticles(
                     articles,
-                    it
+                    it,
+                    this@ArticlesFragment
                 )
         }
         mBinding.progressBar.visibility = View.GONE
+        mBinding.swipeToRefreshArticles.isRefreshing = false
+    }
+
+    override fun onItemSelectedAt(position: Int) {
+        startActivity(Intent(activity, ArticlesContentActivity::class.java))
     }
 }

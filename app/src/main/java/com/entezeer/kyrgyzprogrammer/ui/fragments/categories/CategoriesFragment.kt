@@ -35,6 +35,14 @@ class CategoriesFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeToLiveData()
+
+        setupView()
+    }
+
+    private fun setupView() {
+        mBinding?.swipeToRefreshCategories?.setOnRefreshListener {
+            vm.fetchCategories()
+        }
     }
 
     private fun subscribeToLiveData() {
@@ -53,6 +61,7 @@ class CategoriesFragment :
             )
     }
         mBinding?.progressBar?.visibility = View.GONE
+        mBinding?.swipeToRefreshCategories?.isRefreshing = false
     }
 
     @SuppressLint("NewApi")

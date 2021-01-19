@@ -6,14 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.settings.SettingsFragment">
 
-    <Button
+    <com.entezeer.kyrgyzprogrammer.ui.fragments.settings.custom.CustomButton
+        android:id="@+id/cb_about_app"
+        android:layout_marginTop="@dimen/view_8dp"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/view_100dp"
-        android:foreground="?attr/selectableItemBackground"
-        android:backgroundTint="@color/white"
-        android:text="О приложении"
-        android:id="@+id/about_app"
+        android:layout_height="wrap_content"
+        app:iconSrc="@drawable/about_us"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/view_8dp"/>
+        app:title="@string/about_app" />
+
+    <com.entezeer.kyrgyzprogrammer.ui.fragments.settings.custom.CustomButton
+        android:id="@+id/cb_write_for_us"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_16dp"
+        app:iconSrc="@drawable/contact_us"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_about_app"
+        app:title="@string/write_for_us" />
+
+    <com.entezeer.kyrgyzprogrammer.ui.fragments.settings.custom.CustomButton
+        android:id="@+id/cb_bug_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_4dp"
+        app:iconSrc="@drawable/bug_report"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_write_for_us"
+        app:title="@string/ask_about_wrong" />
+
+    <com.entezeer.kyrgyzprogrammer.ui.fragments.settings.custom.CustomButton
+        android:id="@+id/cb_rate_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_16dp"
+        app:iconSrc="@drawable/rate_app"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_bug_report"
+        app:title="@string/rate_app" />
+
+    <com.entezeer.kyrgyzprogrammer.ui.fragments.settings.custom.CustomButton
+        android:id="@+id/cb_share_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_4dp"
+        app:iconSrc="@drawable/share_app"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_rate_app"
+        app:title="@string/share_app" />
+
+    <com.entezeer.kyrgyzprogrammer.ui.fragments.settings.custom.CustomButton
+        android:id="@+id/cb_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_16dp"
+        app:iconSrc="@drawable/language"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_share_app"
+        app:title="@string/language" />
+
+    <com.entezeer.kyrgyzprogrammer.ui.fragments.settings.custom.CustomButton
+        android:id="@+id/cb_theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_4dp"
+        app:iconSrc="@drawable/theme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_language"
+        app:switchEnabled="true"
+        app:title="@string/theme" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

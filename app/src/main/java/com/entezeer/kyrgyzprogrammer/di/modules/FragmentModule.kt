@@ -1,12 +1,12 @@
 package com.entezeer.kyrgyzprogrammer.di.modules
 
-import com.entezeer.kyrgyzprogrammer.ui.fragments.articles.ArticlesFragment
-import com.entezeer.kyrgyzprogrammer.ui.fragments.categories.CategoriesFragment
-import com.entezeer.kyrgyzprogrammer.ui.fragments.favorite.FavoriteFragment
-import com.entezeer.kyrgyzprogrammer.ui.fragments.home.HomeFragment
-import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.LessonsContainerFragment
-import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.LessonsFragment
-import com.entezeer.kyrgyzprogrammer.ui.fragments.settings.SettingsFragment
+import com.entezeer.kyrgyzprogrammer.ui.articles.ArticlesFragment
+import com.entezeer.kyrgyzprogrammer.ui.categories.CategoriesFragment
+import com.entezeer.kyrgyzprogrammer.ui.favorite.FavoriteFragment
+import com.entezeer.kyrgyzprogrammer.ui.home.HomeFragment
+import com.entezeer.kyrgyzprogrammer.ui.lessons.LessonsContainerFragment
+import com.entezeer.kyrgyzprogrammer.ui.lessons.LessonsFragment
+import com.entezeer.kyrgyzprogrammer.ui.settings.SettingsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

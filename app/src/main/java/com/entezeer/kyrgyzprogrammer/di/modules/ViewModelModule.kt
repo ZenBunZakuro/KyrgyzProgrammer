@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.entezeer.kyrgyzprogrammer.di.factory.ViewModelFactory
 import com.entezeer.kyrgyzprogrammer.di.factory.ViewModelKey
-import com.entezeer.kyrgyzprogrammer.ui.fragments.articles.ArticlesViewModel
-import com.entezeer.kyrgyzprogrammer.ui.fragments.categories.CategoryViewModel
-import com.entezeer.kyrgyzprogrammer.ui.fragments.favorite.FavoriteViewModel
-import com.entezeer.kyrgyzprogrammer.ui.fragments.lessons.LessonsViewModel
+import com.entezeer.kyrgyzprogrammer.ui.articles.ArticlesViewModel
+import com.entezeer.kyrgyzprogrammer.ui.categories.CategoryViewModel
+import com.entezeer.kyrgyzprogrammer.ui.favorite.FavoriteViewModel
+import com.entezeer.kyrgyzprogrammer.ui.lessons.LessonsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

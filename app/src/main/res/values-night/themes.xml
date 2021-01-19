@@ -8,6 +8,8 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:colorBackground">@color/white</item>
+        <item name="snackbarStyle">@style/SnackbarStyle</item>
+        <item name="snackbarTextViewStyle">@style/SnackbarTextStyle</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.Design.NoActionBar">

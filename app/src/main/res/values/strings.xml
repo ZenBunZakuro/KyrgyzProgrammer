@@ -20,5 +20,6 @@
     <string name="share_app">Поделиться приложением</string>
     <string name="language">Язык</string>
     <string name="theme">Тема</string>
+    <string name="no_internet_title">УПС! Подключение к Интернету отсутствует</string>
 
 </resources>

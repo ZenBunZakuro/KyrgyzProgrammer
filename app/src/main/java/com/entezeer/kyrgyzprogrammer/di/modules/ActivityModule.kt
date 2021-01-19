@@ -1,9 +1,9 @@
 package com.entezeer.kyrgyzprogrammer.di.modules
 
-import com.entezeer.kyrgyzprogrammer.MainActivity
-import com.entezeer.kyrgyzprogrammer.ui.activities.ArticlesContentActivity
-import com.entezeer.kyrgyzprogrammer.ui.activities.LessonContentActivity
-import com.entezeer.kyrgyzprogrammer.ui.activities.SplashActivity
+import com.entezeer.kyrgyzprogrammer.ui.main.MainActivity
+import com.entezeer.kyrgyzprogrammer.ui.articles.ArticlesContentActivity
+import com.entezeer.kyrgyzprogrammer.ui.lessons.LessonContentActivity
+import com.entezeer.kyrgyzprogrammer.ui.splash.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

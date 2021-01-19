@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/view_4dp"
-    android:foreground="?attr/selectableItemBackground"
     android:background="@drawable/ripple_effect"
     android:padding="@dimen/view_8dp">
 

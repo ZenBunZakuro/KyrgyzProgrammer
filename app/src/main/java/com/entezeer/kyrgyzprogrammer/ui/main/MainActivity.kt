@@ -3,14 +3,17 @@ package com.entezeer.kyrgyzprogrammer.ui.main
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.core.content.ContextCompat.startActivity
 import com.entezeer.core.extensions.isFragmentVisible
 import com.entezeer.core.extensions.replaceFragment
 import com.entezeer.core.utils.CacheUtils
+import com.entezeer.core.utils.LocaleUtils
 import com.entezeer.core.utils.SnackbarUtils
 import com.entezeer.kyrgyzprogrammer.R
+import com.entezeer.kyrgyzprogrammer.constants.Constants
 import com.entezeer.kyrgyzprogrammer.databinding.ActivityMainBinding
 import com.entezeer.kyrgyzprogrammer.ui.favorite.FavoriteFragment
 import com.entezeer.kyrgyzprogrammer.ui.home.HomeFragment
@@ -30,18 +33,15 @@ class MainActivity : DaggerAppCompatActivity(), ConnectivityReceiver.Connectivit
             ConnectivityReceiver(),
             IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         )
-
         setContentView(mBinding.root)
-
         setupView()
     }
 
     private fun setupView() {
         setSupportActionBar(mBinding.mainToolbar)
 
-        replaceFragment(HomeFragment(),
-            R.id.data_content
-        )
+        checkCurrentFragment()
+        if (mBinding.bottomNav.selectedItemId == R.id.nav_home) replaceFragment(HomeFragment(), R.id.data_content)
 
         mBinding.bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -115,5 +115,14 @@ class MainActivity : DaggerAppCompatActivity(), ConnectivityReceiver.Connectivit
         } else {
             SnackbarUtils.hideSnackBar()
         }
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base?.let { LocaleUtils.setLocale(it) })
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        LocaleUtils.setLocale(this)
     }
 }

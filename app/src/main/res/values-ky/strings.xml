@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kyrgyz Programmer</string>
+
+    <!-- Navigation -->
+    <string name="home">Башкы</string>
+    <string name="favorite">Сүйүктүү</string>
+    <string name="settings">Орнотуулар</string>
+
+    <!-- Tabs -->
+    <string name="lessons" translatable="false">Сабактар</string>
+    <string name="articles">Макалалар</string>
+
+    <string name="about_app">Колдонмо жөнүндө</string>
+    <string name="write_for_us">Бизге жазыңыз</string>
+    <string name="ask_about_wrong">Ката жөнүндө кабарлоо</string>
+    <string name="rate_app">Колдонмону баалоо</string>
+    <string name="share_app">Колдонмону бөлүшүү</string>
+    <string name="language">Тил</string>
+    <string name="theme">Тема</string>
+    <string name="no_internet_title">УПС! Интернет байланышы жок</string>
+
+    <string name="version">Версия</string>
+
+    <string name="about_app_text">KyrgyzProgrammer - Кыргызстандагы орус жана кыргыз тилдеринде гана эмес, жаңыдан башталган программисттер үчүн биринчи пайдалуу булак.
+Бул жерде сиз окуу куралдарын жана пайдалуу макалаларды таба аласыз.
+Макалалардын жана сабактардын авторлору буга чейин бул жаатта тажрыйбалуу иштеп чыгуучулар.</string>
+</resources>

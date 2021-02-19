@@ -8,15 +8,15 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ApiEndpoint {
-    @GET("lessons")
-    suspend fun getLessons(): ArrayList<Lessons>
+    @GET("lessons/{lang}")
+    suspend fun getLessons(@Path("lang") lang: String?): List<Lessons>
 
-    @GET("articles")
-    suspend fun getArticles(): ArrayList<Articles>
+    @GET("articles/{lang}")
+    suspend fun getArticles(@Path("lang") lang: String?): List<Articles>
 
-    @GET("categories")
-    suspend fun getCategories(): ArrayList<Category>
+    @GET("categories/{lang}")
+    suspend fun getCategories(@Path("lang") lang: String?): List<Category>
 
-    @GET("lessons_by_category/{id}")
-    suspend fun getLessonsByCategory(@Path("id") id: Int?): ArrayList<Lessons>
+    @GET("lessons_by_category/{id}/{lang}")
+    suspend fun getLessonsByCategory(@Path("id") id: Int?, @Path("lang") lang: String?): List<Lessons>
 }

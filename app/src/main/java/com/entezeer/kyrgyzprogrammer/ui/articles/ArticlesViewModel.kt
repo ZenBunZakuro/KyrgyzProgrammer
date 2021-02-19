@@ -9,11 +9,14 @@ import javax.inject.Inject
 
 class ArticlesViewModel @Inject constructor(private var articlesRepo: ContentRepository) : BaseViewModel<Event>() {
 
-    val articles: MutableLiveData<ArrayList<Articles>> = MutableLiveData()
+    val articles: MutableLiveData<List<Articles>> = MutableLiveData()
 
-    fun fetchArticles() {
+    fun fetchArticles(lang: String) {
         runWithErrorHandling({
-            articles.value = articlesRepo.getArticles()
-        })
+            articlesRepo.getArticles(lang)
+        },
+            {
+                articles.value = articlesRepo.getAllArticles()
+            })
     }
 }

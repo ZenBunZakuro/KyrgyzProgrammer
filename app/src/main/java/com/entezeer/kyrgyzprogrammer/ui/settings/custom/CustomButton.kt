@@ -1,5 +1,6 @@
 package com.entezeer.kyrgyzprogrammer.ui.settings.custom
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
@@ -17,14 +18,19 @@ class CustomButton : ConstraintLayout {
         setupView(attrs)
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle){
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(
+        context,
+        attrs,
+        defStyle
+    ) {
         setupView(attrs)
     }
 
+    @SuppressLint("CustomViewStyleable")
     private fun setupView(attrs: AttributeSet? = null) {
         View.inflate(context, R.layout.custom_button, this)
         if (attrs == null) return
-        val attributes  = context?.obtainStyledAttributes(attrs, R.styleable.CustomButtonStyle)
+        val attributes = context?.obtainStyledAttributes(attrs, R.styleable.CustomButtonStyle)
         attributes?.run {
             getString(R.styleable.CustomButtonStyle_title)?.let {
                 setTitle(it)
@@ -43,16 +49,28 @@ class CustomButton : ConstraintLayout {
 
     private fun setSwitchVisible(switchEnabled: Boolean) {
         if (switchEnabled) {
-            sw_theme.visibility = View.VISIBLE
+            sw_toggle.visibility = View.VISIBLE
             iv_shevron.visibility = View.GONE
         }
     }
 
-    fun setIcon(icon: Drawable?){
+    fun setIcon(icon: Drawable?) {
         iv_icon.setImageDrawable(icon)
     }
 
-    fun setTitle(title: String){
+    fun setTitle(title: String) {
         id_title.text = title
+    }
+
+    fun switchChangeListener(isCheckedAction: (isChecked: Boolean) -> Unit) {
+        sw_toggle.setOnCheckedChangeListener { _, isChecked ->
+                isCheckedAction(isChecked)
+        }
+    }
+
+    fun setSwitchState(state: Boolean?) {
+        if (state != null) {
+            sw_toggle.isChecked = state
+        }
     }
 }

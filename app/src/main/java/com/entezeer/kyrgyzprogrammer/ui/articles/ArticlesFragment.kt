@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.entezeer.core.base.BaseFragment
+import com.entezeer.core.utils.LocaleUtils
 import com.entezeer.kyrgyzprogrammer.R
 import com.entezeer.kyrgyzprogrammer.data.models.Articles
 import com.entezeer.kyrgyzprogrammer.databinding.FragmentArticlesBinding
@@ -34,18 +35,18 @@ class ArticlesFragment: BaseFragment<ArticlesViewModel>(ArticlesViewModel::class
 
     private fun setupView() {
         mBinding.swipeToRefreshArticles.setOnRefreshListener {
-            vm.fetchArticles()
+            vm.fetchArticles(LocaleUtils.getSavedLocale(requireContext()))
         }
     }
 
     private fun subscribeToLiveData() {
-        vm.fetchArticles()
+        vm.fetchArticles(LocaleUtils.getSavedLocale(requireContext()))
         vm.articles.observe(viewLifecycleOwner, Observer {
             showArticles(it)
         })
     }
 
-    private fun showArticles(articles: ArrayList<Articles>) {
+    private fun showArticles(articles: List<Articles>) {
         activity?.let {
             rcv_articles?.adapter =
                 AdapterArticles(
@@ -59,6 +60,6 @@ class ArticlesFragment: BaseFragment<ArticlesViewModel>(ArticlesViewModel::class
     }
 
     override fun onItemSelectedAt(position: Int) {
-        startActivity(Intent(activity, ArticlesContentActivity::class.java))
+        activity?.let { ArticlesContentActivity.start(it, vm.articles.value?.get(position)!!) }
     }
 }

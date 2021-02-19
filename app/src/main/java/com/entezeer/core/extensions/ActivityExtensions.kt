@@ -6,13 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.entezeer.kyrgyzprogrammer.R
 
-private val AppCompatActivity.toast: Toast?
-    get() = Toast.makeText(
-        applicationContext,
-        "Settings",
-        Toast.LENGTH_SHORT
-    )
-
 fun AppCompatActivity.replaceFragment(fragment: Fragment, content: Int) {
     if (!equalByLast(fragment)) {
         supportFragmentManager.beginTransaction()

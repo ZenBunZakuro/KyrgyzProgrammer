@@ -9,11 +9,12 @@ import javax.inject.Inject
 
 class CategoryViewModel @Inject constructor(private var categoryRepo: ContentRepository) : BaseViewModel<Event>() {
 
-    val categories: MutableLiveData<ArrayList<Category>> = MutableLiveData()
 
-    fun fetchCategories() {
+    val categories: MutableLiveData<List<Category>> = MutableLiveData()
+
+    fun fetchCategories(lang: String) {
         runWithErrorHandling({
-            categories.value = categoryRepo.getCategories()
+            categories.value = categoryRepo.getCategories(lang)
         })
     }
 }

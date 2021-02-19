@@ -7,12 +7,9 @@
     <string name="settings">Настройки</string>
 
     <!-- Tabs -->
-    <string name="lessons">Уроки</string>
+    <string name="lessons" translatable="false">Уроки</string>
     <string name="articles">Статьи</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="webview_text_color">black</string>
     <string name="about_app">О приложении</string>
     <string name="write_for_us">Написать нам</string>
     <string name="ask_about_wrong">Сообщить об ошибке</string>
@@ -22,4 +19,14 @@
     <string name="theme">Тема</string>
     <string name="no_internet_title">УПС! Подключение к Интернету отсутствует</string>
 
+    <string name="webview_text_color" translatable="false">black</string>
+    <string name="russian" translatable="false">Русский</string>
+    <string name="kyrgyz" translatable="false">Кыргызский</string>
+
+    <string name="version">Версия %s</string>
+
+    <!-- Todo добавить теги, сделать KyrgyzProgrammer жирным шрифтом -->
+    <string name="about_app_text"><b>KyrgyzProgrammer</b> - Первый в Кыргызстане полезный источник для начинающих программистов и не только на русском и кыргызском языках.
+\nЗдесь вы можете найти как уроки, так и полезные статьи.
+\nАвторами статей и уроков являются уже опытные разработчики в этой сфере.</string>
 </resources>

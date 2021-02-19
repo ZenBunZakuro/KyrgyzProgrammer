@@ -13,11 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.articles.ArticlesContentActivity"></activity>
+        <activity android:name=".ui.settings.about_us.AboutUsActivity"></activity>
+        <activity
+            android:name=".ui.articles.ArticlesContentActivity"
+            android:theme="@style/CollapsinToolbarTheme" />
         <activity
             android:name=".ui.lessons.LessonContentActivity"
-            android:parentActivityName=".ui.main.MainActivity"
-            android:theme="@style/CollapsinToolbarTheme"></activity>
+            android:theme="@style/CollapsinToolbarTheme" />
         <activity
             android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait"

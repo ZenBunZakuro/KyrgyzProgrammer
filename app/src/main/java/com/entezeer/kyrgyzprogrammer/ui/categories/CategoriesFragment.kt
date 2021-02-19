@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.entezeer.core.base.BaseFragment
+import com.entezeer.core.utils.LocaleUtils
 import com.entezeer.kyrgyzprogrammer.R
+import com.entezeer.kyrgyzprogrammer.constants.Constants
 import com.entezeer.kyrgyzprogrammer.data.models.Category
 import com.entezeer.kyrgyzprogrammer.databinding.FragmentCategoriesBinding
 import com.entezeer.kyrgyzprogrammer.ui.categories.adapter.AdapterCategories
@@ -41,25 +43,25 @@ class CategoriesFragment :
 
     private fun setupView() {
         mBinding?.swipeToRefreshCategories?.setOnRefreshListener {
-            vm.fetchCategories()
+            vm.fetchCategories(LocaleUtils.getSavedLocale(requireContext()))
         }
     }
 
     private fun subscribeToLiveData() {
-        vm.fetchCategories()
+        vm.fetchCategories(LocaleUtils.getSavedLocale(requireContext()))
         vm.categories.observe(viewLifecycleOwner, Observer {
             showCategories(it)
         })
     }
 
-    private fun showCategories(categories: ArrayList<Category>) {
+    private fun showCategories(categories: List<Category>) {
         activity?.let {
-        rcv_categories?.adapter =
-            AdapterCategories(
-                categories,
-                this@CategoriesFragment
-            )
-    }
+            rcv_categories?.adapter =
+                AdapterCategories(
+                    categories,
+                    this@CategoriesFragment
+                )
+        }
         mBinding?.progressBar?.visibility = View.GONE
         mBinding?.swipeToRefreshCategories?.isRefreshing = false
     }

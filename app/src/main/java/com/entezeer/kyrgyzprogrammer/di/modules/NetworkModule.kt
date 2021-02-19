@@ -1,6 +1,7 @@
 package com.entezeer.kyrgyzprogrammer.di.modules
 
 import com.entezeer.kyrgyzprogrammer.BuildConfig
+import com.entezeer.kyrgyzprogrammer.constants.Constants
 import com.entezeer.kyrgyzprogrammer.data.api.ApiEndpoint
 import dagger.Module
 import dagger.Provides
@@ -19,7 +20,7 @@ class NetworkModule {
     fun provideApiClient(okHttpClient: OkHttpClient): ApiEndpoint = getApiclient(okHttpClient).create(ApiEndpoint::class.java)
 
     fun getApiclient(okHttpClient: OkHttpClient): Retrofit =
-        Retrofit.Builder().baseUrl("https://kyrgyzprogrammer.herokuapp.com/api/")
+        Retrofit.Builder().baseUrl(Constants.baseUrl)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build()
 

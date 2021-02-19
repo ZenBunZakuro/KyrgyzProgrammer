@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.entezeer.core.base.BaseViewHolder
 import com.entezeer.kyrgyzprogrammer.data.models.Lessons
 
-class AdapterLessons(val list: ArrayList<Lessons>, var listener: Listener) :
+class AdapterLessons(val list: List<Lessons>, var listener: Listener) :
     RecyclerView.Adapter<BaseViewHolder<Lessons>>() {
 
 

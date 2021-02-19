@@ -1,87 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentConstr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.settings.SettingsFragment">
 
-    <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
-        android:id="@+id/cb_about_app"
-        android:layout_marginTop="@dimen/view_8dp"
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:iconSrc="@drawable/about_us"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/about_app" />
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
-        android:id="@+id/cb_write_for_us"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/view_16dp"
-        app:iconSrc="@drawable/contact_us"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_about_app"
-        app:title="@string/write_for_us" />
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.settings.SettingsFragment">
 
-    <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
-        android:id="@+id/cb_bug_report"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/view_4dp"
-        app:iconSrc="@drawable/bug_report"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_write_for_us"
-        app:title="@string/ask_about_wrong" />
+            <ImageView
+                android:layout_width="@dimen/view_160dp"
+                android:layout_height="@dimen/view_160dp"
+                android:src="@drawable/logo"
+                app:layout_constraintBottom_toTopOf="@+id/cb_about_app"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
-        android:id="@+id/cb_rate_app"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/view_16dp"
-        app:iconSrc="@drawable/rate_app"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_bug_report"
-        app:title="@string/rate_app" />
+            <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
+                android:id="@+id/cb_about_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/view_4dp"
+                app:iconSrc="@drawable/about_us"
+                app:layout_constraintBottom_toTopOf="@id/cb_write_for_us"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:title="@string/about_app" />
 
-    <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
-        android:id="@+id/cb_share_app"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/view_4dp"
-        app:iconSrc="@drawable/share_app"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_rate_app"
-        app:title="@string/share_app" />
+            <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
+                android:id="@+id/cb_write_for_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/view_16dp"
+                app:iconSrc="@drawable/contact_us"
+                app:layout_constraintBottom_toTopOf="@+id/cb_bug_report"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:title="@string/write_for_us" />
 
-    <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
-        android:id="@+id/cb_language"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/view_16dp"
-        app:iconSrc="@drawable/language"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_share_app"
-        app:title="@string/language" />
+            <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
+                android:id="@+id/cb_bug_report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/view_4dp"
+                app:iconSrc="@drawable/bug_report"
+                app:layout_constraintBottom_toTopOf="@+id/cb_rate_app"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:title="@string/ask_about_wrong" />
 
-    <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
-        android:id="@+id/cb_theme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/view_4dp"
-        app:iconSrc="@drawable/theme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_language"
-        app:switchEnabled="true"
-        app:title="@string/theme" />
+            <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
+                android:id="@+id/cb_rate_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/view_16dp"
+                app:iconSrc="@drawable/rate_app"
+                app:layout_constraintBottom_toTopOf="@+id/cb_share_app"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:title="@string/rate_app" />
+
+            <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
+                android:id="@+id/cb_share_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/view_4dp"
+                app:iconSrc="@drawable/share_app"
+                app:layout_constraintBottom_toTopOf="@+id/cb_language"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:title="@string/share_app" />
+
+            <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
+                android:id="@+id/cb_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/view_16dp"
+                app:iconSrc="@drawable/language"
+                app:layout_constraintBottom_toTopOf="@+id/cb_theme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:title="@string/language" />
+
+            <com.entezeer.kyrgyzprogrammer.ui.settings.custom.CustomButton
+                android:id="@+id/cb_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/view_36dp"
+                app:iconSrc="@drawable/theme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:switchEnabled="true"
+                app:title="@string/theme" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    
 
 </androidx.constraintlayout.widget.ConstraintLayout>

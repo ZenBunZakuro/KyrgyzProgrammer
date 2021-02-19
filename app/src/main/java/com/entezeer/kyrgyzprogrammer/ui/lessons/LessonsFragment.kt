@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.entezeer.core.base.BaseFragment
+import com.entezeer.core.utils.LocaleUtils
 import com.entezeer.core.utils.TransitionUtil
 import com.entezeer.kyrgyzprogrammer.R
 import com.entezeer.kyrgyzprogrammer.data.models.Lessons
@@ -37,13 +38,13 @@ class LessonsFragment :
     }
 
     private fun subscribeToLiveData() {
-        arguments?.getInt(ARG_ID)?.let { vm.fetchLessons(it) }
+        arguments?.getInt(ARG_ID)?.let { vm.fetchLessons(it, LocaleUtils.getSavedLocale(requireContext())) }
         vm.lessons.observe(viewLifecycleOwner, Observer {
             showLessons(it)
         })
     }
 
-    private fun showLessons(lessons: ArrayList<Lessons>) {
+    private fun showLessons(lessons: List<Lessons>) {
         activity?.let {
             rcv_lessons?.adapter =
                 AdapterLessons(
@@ -61,7 +62,7 @@ class LessonsFragment :
         tv_title.text = arguments?.getString(ARG_ITEM)
 
         mBinding.swipeToRefreshLessons.setOnRefreshListener {
-            arguments?.getInt(ARG_ID)?.let { vm.fetchLessons(it) }
+            arguments?.getInt(ARG_ID)?.let { vm.fetchLessons(it, LocaleUtils.getSavedLocale(requireContext())) }
         }
     }
 

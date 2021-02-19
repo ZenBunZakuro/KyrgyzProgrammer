@@ -7,7 +7,7 @@ import com.entezeer.core.base.BaseViewHolder
 import com.entezeer.kyrgyzprogrammer.data.models.Articles
 
 class AdapterArticles(
-    val list: ArrayList<Articles>,
+    val list: List<Articles>,
     var context: Context,
     var listener: Listener
 ) :

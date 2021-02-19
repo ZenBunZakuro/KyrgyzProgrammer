@@ -37,7 +37,7 @@ class LessonContentActivity : AppCompatActivity() {
         mBinding.wvContent.apply {
             settings.javaScriptEnabled = true
             setBackgroundColor(Color.TRANSPARENT)
-            lesson?.content?.let { loadData("<font color='${getString(R.string.webview_text_color)}'><style>img{display: inline; height: auto; max-width: 100%;} body{text-align: justify;}</style>$it</font>", "text/html; charset=UTF-8", null) }
+            lesson?.content?.let { loadData("<html><style>.wrap{}</style><body><div class='wrap'>$it</div></body></html>", "text/html; charset=UTF-8", null) }
         }
 
         Glide.with(this).load(lesson?.img).into(mBinding.ivContentImage)

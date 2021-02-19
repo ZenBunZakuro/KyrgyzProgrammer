@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.settings.bottomsheet.LanguageChooseBottomSheetFragment">
+
+    <!-- ToDo галочка справа и картинка галочка -->
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/view_16dp">
+
+        <RadioButton
+            android:id="@+id/radio_button_ru"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_8dp"
+            android:button="@color/transparent"
+            android:drawableEnd="@drawable/radio_selector"
+            android:text="@string/russian"
+            android:textSize="@dimen/text_18sp" />
+
+        <RadioButton
+            android:id="@+id/radio_button_kg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@color/transparent"
+            android:drawableEnd="@drawable/radio_selector"
+            android:text="@string/kyrgyz"
+            android:textSize="@dimen/text_18sp" />
+    </RadioGroup>
+
+</FrameLayout>

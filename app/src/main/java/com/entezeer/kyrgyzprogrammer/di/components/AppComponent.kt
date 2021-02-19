@@ -3,10 +3,7 @@ package com.entezeer.kyrgyzprogrammer.di.components
 import android.app.Application
 import android.os.Build
 import com.entezeer.kyrgyzprogrammer.App
-import com.entezeer.kyrgyzprogrammer.di.modules.ActivityModule
-import com.entezeer.kyrgyzprogrammer.di.modules.FragmentModule
-import com.entezeer.kyrgyzprogrammer.di.modules.NetworkModule
-import com.entezeer.kyrgyzprogrammer.di.modules.ViewModelModule
+import com.entezeer.kyrgyzprogrammer.di.modules.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -20,10 +17,11 @@ import javax.inject.Singleton
         NetworkModule::class,
         ViewModelModule::class,
         ActivityModule::class,
-        FragmentModule::class]
+        FragmentModule::class,
+        AppModule::class]
 )
 
-interface AppComponent: AndroidInjector<App> {
+interface AppComponent : AndroidInjector<App> {
 
     fun inject(application: Application)
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.entezeer.core.base.BaseViewHolder
 import com.entezeer.kyrgyzprogrammer.data.models.Category
 
-class AdapterCategories(val list: ArrayList<Category>, var listener: Listener) :
+class AdapterCategories(val list: List<Category>, var listener: Listener) :
     RecyclerView.Adapter<BaseViewHolder<Category>>() {
 
 

@@ -1,7 +1,10 @@
 package com.entezeer.core.utils
 
 import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Build
+import android.os.LocaleList
 import com.entezeer.core.preferences.SharedStorageImpl
 import com.entezeer.kyrgyzprogrammer.constants.Constants
 import java.util.*
@@ -9,38 +12,36 @@ import java.util.*
 
 object LocaleUtils {
 
-    fun setLocale(c: Context): Context? {
-        return updateResources(c, getSavedLocale(c))
-    }
+    fun setLocale(context: Context, lang: String): Context? {
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val res: Resources = context.resources
+        val conf = Configuration(res.configuration)
+        conf.setLayoutDirection(locale)
 
-    fun setNewLocale(
-        c: Context,
-        language: String
-    ): Context? {
-        updateResources(c, language)
-        val settings = SharedStorageImpl(c, Constants.settings)
-        settings.save(Constants.language, language)
-        return c
-    }
+        val savedLanguage = SharedStorageImpl(context, Constants.settings)
+        savedLanguage.save(Constants.language, lang)
 
-    private fun updateResources(
-        c: Context,
-        language: String
-    ): Context? {
-        var context = c
-        val locale = Locale(language)
-        val configuration = context.resources.configuration
-        val res = context.resources
-
-        if (Build.VERSION.SDK_INT >= 17) {
-            Locale.setDefault(locale)
-            configuration.setLocale(locale)
-            context = context.createConfigurationContext(configuration)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            conf.setLocale(locale)
+            val localeList = LocaleList(locale)
+            LocaleList.setDefault(localeList)
+            conf.setLocales(localeList)
         } else {
-            configuration.locale = locale
-            res.updateConfiguration(configuration, res.displayMetrics)
+            conf.locale = locale
+            conf.setLocale(locale)
         }
-        return context
+
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+            context.createConfigurationContext(conf)
+        } else {
+            res.updateConfiguration(conf, res.displayMetrics)
+            context
+        }
+    }
+
+    fun onAttach(context: Context): Context? {
+        return setLocale(context, getSavedLocale(context))
     }
 
     fun getSavedLocale(c: Context): String {

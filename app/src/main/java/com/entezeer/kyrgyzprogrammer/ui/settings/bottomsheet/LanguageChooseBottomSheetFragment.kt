@@ -37,12 +37,12 @@ class LanguageChooseBottomSheetFragment : BottomSheetDialogFragment() {
         mBinding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.radio_button_ru -> {
-                    activity?.let { LocaleUtils.setNewLocale(it, Constants.RU) }
+                    activity?.let { LocaleUtils.setLocale(it, Constants.RU) }
                     activity?.recreate()
                     dismiss()
                 }
                 R.id.radio_button_kg -> {
-                    activity?.let { LocaleUtils.setNewLocale(it, Constants.KG) }
+                    activity?.let { LocaleUtils.setLocale(it, Constants.KG) }
                     activity?.recreate()
                     dismiss()
                 }

@@ -5,15 +5,25 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.entezeer.kyrgyzprogrammer.R
+import com.entezeer.kyrgyzprogrammer.ui.home.HomeFragment
 
 fun AppCompatActivity.replaceFragment(fragment: Fragment, content: Int) {
     if (!equalByLast(fragment)) {
-        supportFragmentManager.beginTransaction()
-            .replace(content, fragment)
-            .addToBackStack(fragment::class.java.canonicalName)
-            .commit()
+        //ToDo реализовать проверку на нахождения фрагмента в стеке бэк, для того чтобы
+        //  недобавлять его далее, при повторном нажатии на него
+        if (!supportFragmentManager.fragments.contains(fragment)) {
+            supportFragmentManager.beginTransaction()
+                .replace(content, fragment)
+                .addToBackStack(fragment::class.java.canonicalName)
+                .commit()
+        }else{
+            supportFragmentManager.beginTransaction()
+                .replace(content, fragment)
+                .commit()
+        }
     }
 }
+
 
 fun AppCompatActivity.equalByLast(fragment: Fragment): Boolean {
     if (supportFragmentManager.backStackEntryCount > 0) {
